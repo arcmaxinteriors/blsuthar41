@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Interior Projects Portfolio | Arcmax Interiors Ahmedabad</title>
+
+<meta name="description" content="Explore residential and commercial interior projects by Arcmax Interiors. Luxury turnkey interior projects with premium finishes and expert craftsmanship in Ahmedabad.">
+<meta name="keywords" content="Interior Projects Ahmedabad, Residential Interior Projects, Commercial Interiors, Turnkey Projects Portfolio">
+<meta name="author" content="Arcmax Interiors">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/futura-pt" rel="stylesheet">
+
+<style>
+:root{
+--gold:#c5a059;--charcoal:#2d2d2d;--light:#f9f9f9;--white:#fff;
+--radius:12px;--transition:all .4s cubic-bezier(.165,.84,.44,1)
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Futura PT',sans-serif}
+body{color:var(--charcoal);background:var(--white);line-height:1.6}
+h2{text-transform:uppercase;letter-spacing:2px;font-size:2.4rem}
+.section-padding{padding:100px 8%}
+.center-text{text-align:center;margin-bottom:60px}
+.underline{width:60px;height:3px;background:var(--gold);margin:15px auto}
+
+/* NAV */
+nav{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 8%;background:#fff;position:sticky;top:0;z-index:2000;
+box-shadow:0 4px 20px rgba(0,0,0,.08)
+}
+.logo-box{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.4rem}
+.logo-box i{color:var(--gold);font-size:2rem}
+.nav-links{display:flex;list-style:none;gap:30px}
+.nav-links a{text-decoration:none;color:var(--charcoal);font-weight:500}
+.nav-links a.active,.nav-links a:hover{color:var(--gold)}
+.btn-estimate-nav{
+background:var(--gold);color:#fff!important;
+padding:10px 25px;border-radius:50px
+}
+
+/* HERO */
+.page-hero{
+height:50vh;
+background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80') center/cover;
+display:flex;align-items:center;justify-content:center;
+color:#fff;text-align:center
+}
+.page-hero h1{font-size:3.5rem}
+
+/* PROJECT GRID */
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:20px
+}
+.project-card{
+position:relative;
+height:320px;
+border-radius:var(--radius);
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1)
+}
+.project-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s
+}
+.project-overlay{
+position:absolute;top:0;left:0;width:100%;height:100%;
+background:rgba(197,160,89,.85);
+color:#fff;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+opacity:0;transition:var(--transition);
+text-align:center;padding:20px
+}
+.project-card:hover img{transform:scale(1.1)}
+.project-card:hover .project-overlay{opacity:1}
+
+/* CTA */
+.submit-btn{
+background:var(--gold);color:#fff;border:none;
+padding:15px 40px;border-radius:50px;
+font-weight:700;cursor:pointer
+}
+.submit-btn:hover{background:#b08e48}
+
+footer{
+background:#2d2d2d;color:#fff;
+text-align:center;padding:40px
+}
+
+/* MOBILE */
+@media(max-width:992px){
+.page-hero h1{font-size:2.4rem}
+.section-padding{padding:60px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="logo-box">
+<i class="fas fa-layer-group"></i> ARCMAX INTERIORS
+</div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="projects.html" class="active">Projects</a></li>
+<li><a href="estimate.html" class="btn-estimate-nav">Get Estimate</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+<h1 data-aos="fade-up">Our Projects</h1>
+</section>
+
+<!-- PROJECTS -->
+<section class="section-padding">
+<div class="center-text" data-aos="fade-up">
+<h2>Completed Works</h2>
+<div class="underline"></div>
+<p style="max-width:900px;margin:auto;color:#555">
+A showcase of our premium residential and commercial interior projects,
+executed with precision and excellence.
+</p>
+</div>
+
+<div class="project-grid">
+
+<div class="project-card" data-aos="zoom-in">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80" alt="Luxury Living Room">
+<div class="project-overlay">
+<h3>Luxury Living Room</h3>
+<p>Modern Woodwork & Lighting</p>
+</div>
+</div>
+
+<div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+<img src="https://images.unsplash.com/photo-1617806118233-18e1de247398?auto=format&fit=crop&q=80" alt="Modular Kitchen">
+<div class="project-overlay">
+<h3>Modular Kitchen</h3>
+<p>Premium Corian Finish</p>
+</div>
+</div>
+
+<div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+<img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80" alt="Master Bedroom">
+<div class="project-overlay">
+<h3>Master Bedroom</h3>
+<p>Designer Ceiling & Wardrobe</p>
+</div>
+</div>
+
+<div class="project-card" data-aos="zoom-in">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" alt="Office Interior">
+<div class="project-overlay">
+<h3>Office Interior</h3>
+<p>Commercial Turnkey Project</p>
+</div>
+</div>
+
+<div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&q=80" alt="Bathroom Design">
+<div class="project-overlay">
+<h3>Luxury Bathroom</h3>
+<p>Stone & Glass Finish</p>
+</div>
+</div>
+
+<div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+<img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&q=80" alt="Dining Area">
+<div class="project-overlay">
+<h3>Dining Area</h3>
+<p>Modern Interior Styling</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section-padding" style="background:var(--light)">
+<div class="center-text" data-aos="fade-up">
+<h2>Inspired by Our Work?</h2>
+<div class="underline"></div>
+<a href="estimate.html" class="submit-btn">Start Your Project</a>
+</div>
+</section>
+
+<footer>
+© 2026 Arcmax Interiors. All Rights Reserved.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+</script>
+
+</body>
+</html>
