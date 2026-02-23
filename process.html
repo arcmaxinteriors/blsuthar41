@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Process — Arcmax Interiors</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* PROCESS TIMELINE */
+.process-timeline { position: relative; padding: 20px 0; }
+.process-step {
+  display: grid; grid-template-columns: 80px 1px 1fr;
+  gap: 0 40px; position: relative;
+  padding-bottom: 64px;
+}
+.process-step:last-child { padding-bottom: 0; }
+/* Number column */
+.ps-num-col { display: flex; flex-direction: column; align-items: center; }
+.ps-num {
+  width: 80px; height: 80px; flex-shrink: 0;
+  background: var(--ink); border: 2px solid var(--gold);
+  display: grid; place-items: center;
+  font-family: var(--futura); font-size: 28px; font-weight: 200;
+  color: var(--gold); letter-spacing: -1px;
+}
+.ps-line {
+  flex: 1; width: 1px; background: var(--border);
+  margin-top: 4px; min-height: 40px;
+}
+.process-step:last-child .ps-line { display: none; }
+/* Content */
+.ps-body { padding-top: 12px; padding-bottom: 8px; }
+.ps-title {
+  font-family: var(--futura); font-size: 22px; font-weight: 600;
+  letter-spacing: -0.3px; color: var(--ink); margin-bottom: 12px;
+}
+.ps-desc { font-size: 14px; color: var(--muted); line-height: 1.85; letter-spacing: 0.3px; margin-bottom: 20px; }
+.ps-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.ps-checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: var(--futura); font-size: 12px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--ink-2, #2C2C2C);
+}
+.ps-checklist li i { color: var(--gold); font-size: 11px; margin-top: 1px; flex-shrink: 0; }
+.ps-icon-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-bg); border: 1px solid var(--gold-lt);
+  padding: 8px 16px; margin-bottom: 16px;
+  font-family: var(--futura); font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+}
+.ps-icon-badge i { font-size: 14px; }
+
+/* PROCESS OVERVIEW GRID */
+.overview-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; background: var(--border);
+}
+.ov-card {
+  background: var(--cream); padding: 36px 28px;
+  text-align: center; transition: background 0.3s;
+}
+.ov-card:hover { background: var(--gold-bg); }
+.ov-icon {
+  font-size: 28px; color: var(--gold); margin-bottom: 16px;
+}
+.ov-num {
+  font-family: var(--futura); font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 8px;
+}
+.ov-title {
+  font-family: var(--futura); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.5px; color: var(--ink);
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 2px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px; cursor: pointer;
+  font-family: var(--futura); font-size: 15px; font-weight: 600;
+  letter-spacing: 0.3px; color: var(--ink);
+  transition: background 0.25s; gap: 20px;
+}
+.faq-q:hover { background: var(--gold-bg); }
+.faq-q i { font-size: 12px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a {
+  font-size: 14px; color: var(--muted); line-height: 1.85;
+  letter-spacing: 0.3px; padding: 0 28px;
+  max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 400px; padding: 0 28px 24px; }
+
+@media (max-width: 900px) {
+  .process-step { grid-template-columns: 56px 1px 1fr; gap: 0 24px; }
+  .ps-num { width: 56px; height: 56px; font-size: 20px; }
+  .overview-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .process-step { grid-template-columns: 44px 1px 1fr; gap: 0 16px; }
+  .ps-num { width: 44px; height: 44px; font-size: 16px; }
+  .ps-title { font-size: 18px; }
+  .overview-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html"><div class="nav-logo-mark"><span>A</span></div><div class="nav-logo-text"><span class="nav-logo-name">Arcmax Interiors</span><span class="nav-logo-sub">Design &amp; Build</span></div></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="process.html" class="active">Process</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" class="nav-cta" onclick="openModal(event)">Get Estimate</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="index.html" onclick="toggleDrawer()">Home</a>
+  <a href="services.html" onclick="toggleDrawer()">Services</a>
+  <a href="portfolio.html" onclick="toggleDrawer()">Portfolio</a>
+  <a href="process.html" onclick="toggleDrawer()">Process</a>
+  <a href="contact.html" onclick="toggleDrawer()">Contact</a>
+  <a href="#" class="m-cta" onclick="toggleDrawer();openModal(event)">Get Free Estimate</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-glow"></div>
+  <div class="container page-hero-inner">
+    <div class="label reveal">How We Work</div>
+    <h1 class="h2 reveal" style="color:white; margin-top:14px; transition-delay:0.1s">Our Work <em>Process</em></h1>
+    <p style="font-family:var(--futura); font-size:14px; color:rgba(255,255,255,0.45); margin-top:16px; max-width:520px; line-height:1.9; letter-spacing:0.5px;" class="reveal">A seamless, structured 8-step approach from first call to final handover — ensuring quality and clarity at every stage.</p>
+  </div>
+</div>
+
+<!-- OVERVIEW GRID -->
+<section style="padding:64px 0; background:var(--section-alt);">
+  <div class="container">
+    <div class="overview-grid reveal">
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-handshake"></i></div><div class="ov-num">Step 01</div><div class="ov-title">Consultation</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-pencil-ruler"></i></div><div class="ov-num">Step 02</div><div class="ov-title">Design</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-palette"></i></div><div class="ov-num">Step 03</div><div class="ov-title">Materials</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-ruler-combined"></i></div><div class="ov-num">Step 04</div><div class="ov-title">Site Measure</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-search"></i></div><div class="ov-num">Step 05</div><div class="ov-title">Pre-Inspection</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-hammer"></i></div><div class="ov-num">Step 06</div><div class="ov-title">Installation</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-clipboard-check"></i></div><div class="ov-num">Step 07</div><div class="ov-title">Quality Check</div></div>
+      <div class="ov-card"><div class="ov-icon"><i class="fas fa-key"></i></div><div class="ov-num">Step 08</div><div class="ov-title">Handover</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED TIMELINE -->
+<section class="section">
+  <div class="container" style="display:grid; grid-template-columns:1fr 340px; gap:80px; align-items:start;">
+    <div>
+      <div class="label reveal">Step by Step</div>
+      <h2 class="h2 reveal" style="margin-top:12px; margin-bottom:64px; transition-delay:0.1s">Detailed <em>Breakdown</em></h2>
+      <div class="process-timeline">
+
+        <!-- Step 1 -->
+        <div class="process-step reveal">
+          <div class="ps-num-col"><div class="ps-num">01</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-handshake"></i>Consultation</div>
+            <h3 class="ps-title">Initial Consultation &amp; Quotation</h3>
+            <p class="ps-desc">We begin with a thorough one-on-one consultation — in person or virtual — to understand your vision, lifestyle, space requirements, and budget. This is where we listen deeply and ask the right questions so that we can craft a solution that is truly yours. A detailed quotation is then prepared within 48–72 hours.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>In-person or virtual meeting</li>
+              <li><i class="fas fa-check"></i>Needs &amp; style assessment</li>
+              <li><i class="fas fa-check"></i>Budget and timeline discussion</li>
+              <li><i class="fas fa-check"></i>Detailed quotation within 48 hours</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step reveal" style="transition-delay:0.1s">
+          <div class="ps-num-col"><div class="ps-num">02</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-pencil-ruler"></i>Design</div>
+            <h3 class="ps-title">Design &amp; Shop Drawings</h3>
+            <p class="ps-desc">Our design team creates detailed 2D shop drawings and photorealistic 3D renders so you can visualise your space before a single piece of material is sourced. We revise until you're 100% happy — no guesswork, no surprises.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>2D floor plans &amp; elevations</li>
+              <li><i class="fas fa-check"></i>3D photorealistic renders</li>
+              <li><i class="fas fa-check"></i>Unlimited design revisions</li>
+              <li><i class="fas fa-check"></i>Material specification sheet</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step reveal" style="transition-delay:0.15s">
+          <div class="ps-num-col"><div class="ps-num">03</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-palette"></i>Materials</div>
+            <h3 class="ps-title">Material Approvals</h3>
+            <p class="ps-desc">All materials, finishes, hardware, fabrics, and stone samples are reviewed and approved by you before any sourcing begins. We present curated options from our trusted vendor network so every choice feels right.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>Laminate &amp; veneer selection</li>
+              <li><i class="fas fa-check"></i>Stone &amp; tile samples</li>
+              <li><i class="fas fa-check"></i>Hardware &amp; fitting selection</li>
+              <li><i class="fas fa-check"></i>Fabric &amp; upholstery approval</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step reveal" style="transition-delay:0.2s">
+          <div class="ps-num-col"><div class="ps-num">04</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-ruler-combined"></i>Site</div>
+            <h3 class="ps-title">Site Measurement &amp; Assessment</h3>
+            <p class="ps-desc">Our team conducts precise on-site measurements and a comprehensive site assessment to account for any structural nuances, existing MEP lines, or architectural constraints. This ensures every element we manufacture fits perfectly.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>Precision laser measurements</li>
+              <li><i class="fas fa-check"></i>Site condition assessment</li>
+              <li><i class="fas fa-check"></i>MEP &amp; structural review</li>
+              <li><i class="fas fa-check"></i>Final shop drawing update</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="process-step reveal" style="transition-delay:0.1s">
+          <div class="ps-num-col"><div class="ps-num">05</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-search"></i>Inspection</div>
+            <h3 class="ps-title">Delivery Pre-Inspection</h3>
+            <p class="ps-desc">Every item is inspected at our workshop before it leaves for the site. Finishes, fit, dimensions, and hardware are all checked against the approved drawings to ensure zero defects reach your space.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>Workshop QC checklist</li>
+              <li><i class="fas fa-check"></i>Finish &amp; colour verification</li>
+              <li><i class="fas fa-check"></i>Hardware pre-fitting</li>
+              <li><i class="fas fa-check"></i>Dimensional tolerance check</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="process-step reveal" style="transition-delay:0.15s">
+          <div class="ps-num-col"><div class="ps-num">06</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-hammer"></i>Installation</div>
+            <h3 class="ps-title">Final Assembly &amp; Installation</h3>
+            <p class="ps-desc">Our experienced installation team sets up your space with precision and care, working to minimise dust, disruption, and inconvenience. All trades — carpentry, electrical, glass, stone — are coordinated for efficient execution.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>Coordinated multi-trade setup</li>
+              <li><i class="fas fa-check"></i>Minimal site disruption</li>
+              <li><i class="fas fa-check"></i>Daily site progress updates</li>
+              <li><i class="fas fa-check"></i>Clean &amp; safe installation zone</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="process-step reveal" style="transition-delay:0.2s">
+          <div class="ps-num-col"><div class="ps-num">07</div><div class="ps-line"></div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-clipboard-check"></i>Quality</div>
+            <h3 class="ps-title">Quality Control &amp; Inspection</h3>
+            <p class="ps-desc">Before handover, our project manager conducts a rigorous quality walkthrough — checking every door, drawer, edge, switch, and finish against our quality benchmark. Any snag is addressed before we call it complete.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>Full site snagging list</li>
+              <li><i class="fas fa-check"></i>Fit &amp; finish verification</li>
+              <li><i class="fas fa-check"></i>Electrical &amp; lighting test</li>
+              <li><i class="fas fa-check"></i>Client walk-through session</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="process-step reveal" style="transition-delay:0.25s">
+          <div class="ps-num-col"><div class="ps-num">08</div></div>
+          <div></div>
+          <div class="ps-body">
+            <div class="ps-icon-badge"><i class="fas fa-key"></i>Handover</div>
+            <h3 class="ps-title">Handover</h3>
+            <p class="ps-desc">Your beautiful, complete space is handed over on the date we promised — ready to be lived in and enjoyed. We provide care instructions for all materials and remain available for any post-handover support.</p>
+            <ul class="ps-checklist">
+              <li><i class="fas fa-check"></i>On-time delivery guarantee</li>
+              <li><i class="fas fa-check"></i>Care &amp; maintenance guide</li>
+              <li><i class="fas fa-check"></i>Warranty documentation</li>
+              <li><i class="fas fa-check"></i>Post-handover support</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar sticky -->
+    <div style="position:sticky; top:100px; display:flex; flex-direction:column; gap:24px;">
+      <!-- Quick contact card -->
+      <div style="background:var(--ink); padding:40px 32px;">
+        <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Ready to Start?</div>
+        <h3 style="font-family:var(--futura); font-size:24px; font-weight:200; color:white; letter-spacing:-0.5px; margin-bottom:16px;">Let's discuss your <strong style="font-weight:700; color:var(--gold);">project</strong></h3>
+        <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.8; margin-bottom:28px;">Get a free consultation and estimate. No obligation.</p>
+        <a href="#" class="btn btn-gold" style="width:100%; justify-content:center;" onclick="openModal(event)"><i class="fas fa-drafting-compass"></i>Get Estimate</a>
+        <div style="margin-top:16px; display:flex; gap:8px;">
+          <a href="tel:+919828970747" class="btn btn-outline-dark" style="flex:1; justify-content:center; font-size:10px; padding:12px;"><i class="fas fa-phone-alt"></i>Call</a>
+          <a href="https://wa.me/919828970747" class="btn" style="flex:1; justify-content:center; font-size:10px; padding:12px; background:#25D366; color:white;" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+        </div>
+      </div>
+      <!-- Promise card -->
+      <div style="background:var(--gold-bg); border:1px solid var(--gold-lt); padding:32px;">
+        <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Our Promise</div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--futura); font-size:12px; font-weight:600; letter-spacing:1px; color:var(--ink);"><i class="fas fa-check-circle" style="color:var(--gold);"></i>On-Time Delivery</div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--futura); font-size:12px; font-weight:600; letter-spacing:1px; color:var(--ink);"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Transparent Pricing</div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--futura); font-size:12px; font-weight:600; letter-spacing:1px; color:var(--ink);"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Premium Materials</div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--futura); font-size:12px; font-weight:600; letter-spacing:1px; color:var(--ink);"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Post-Handover Support</div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--futura); font-size:12px; font-weight:600; letter-spacing:1px; color:var(--ink);"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Warranty Coverage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label reveal">Questions</div>
+      <h2 class="h2 reveal" style="margin-top:12px; transition-delay:0.1s">Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div class="faq-list reveal" style="max-width:800px; margin:0 auto;">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does a typical interior project take?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Project duration varies based on scope and size. A standard 2BHK residential project typically takes 6–10 weeks. Larger villas or commercial projects may take 12–20 weeks. We always provide a detailed project schedule at the quotation stage and keep you updated throughout.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you handle complete turnkey projects?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Yes. Arcmax Interiors is a complete turnkey firm. We manage everything from concept design and material sourcing to execution, quality control, and final handover. You deal with one point of contact — no need to coordinate multiple contractors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I make changes during the project?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Minor changes during early stages are easily accommodated. Significant design changes after material approval or production begins may impact cost and timeline, which we'll discuss transparently before proceeding.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What areas do you serve?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">We are based in Bibwewadi, Pune and serve projects across all areas of Pune. We also take select outstation projects depending on project size and scope. Contact us to discuss your specific location.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you provide warranty on your work?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Yes. We provide warranty coverage on all our workmanship. Specific warranty terms vary by material and service type, and are clearly outlined in our project agreement. Our team remains available for post-handover support.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the payment structure?<i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Our payment is structured in milestone-based installments tied to key project phases — consultation, design approval, material procurement, installation, and handover. This ensures transparency and aligns payment with progress.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="nav-logo" href="index.html"><div class="nav-logo-mark"><span>A</span></div><div class="nav-logo-text"><span class="nav-logo-name" style="color:white">Arcmax Interiors</span><span class="nav-logo-sub">Design &amp; Build</span></div></a><p>Premium interior design and turnkey execution firm based in Pune, Maharashtra.</p><div class="social-row"><a class="social-icon" href="https://www.instagram.com/arcmaxinteriors" target="_blank"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://www.facebook.com/arcmaxinteriors" target="_blank"><i class="fab fa-facebook-f"></i></a><a class="social-icon" href="https://www.linkedin.com/company/arcmaxinteriors" target="_blank"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://www.x.com/arcmaxinteriors" target="_blank"><i class="fab fa-x-twitter"></i></a><a class="social-icon" href="https://m.youtube.com/@arcmaxinteriors" target="_blank"><i class="fab fa-youtube"></i></a></div></div>
+      <div class="footer-col"><h5>Navigation</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="process.html">Process</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">2D/3D Drawings</a></li><li><a href="services.html">Joinery Works</a></li><li><a href="services.html">Corian &amp; Stone</a></li><li><a href="services.html">Electric Work</a></li><li><a href="services.html">Glass &amp; Aluminum</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:+919828970747"><i class="fas fa-phone-alt"></i>+91 98289 70747</a></li><li><a href="mailto:info@arcmaxinteriors.com"><i class="fas fa-envelope"></i>info@arcmaxinteriors.com</a></li><li><a href="contact.html"><i class="fas fa-map-marker-alt"></i>Bibwewadi, Pune</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Arcmax Interiors. All Rights Reserved.</span><span>Indira Nagar, Bibwewadi, Pune MH 411037</span></div>
+  </div>
+</footer>
+
+<div class="floats">
+  <a class="float-btn float-call" href="tel:+919828970747"><i class="fas fa-phone-alt"></i><span class="float-tooltip">Call Us</span></a>
+  <a class="float-btn float-wa" href="https://wa.me/919828970747" target="_blank"><i class="fab fa-whatsapp"></i><span class="float-tooltip">WhatsApp</span></a>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3>Free Estimate Request</h3><button class="modal-close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button></div>
+    <div class="modal-content">
+      <h2>Get Your <strong>Estimate</strong></h2>
+      <p>We'll respond within 24 hours with a tailored estimate.</p>
+      <div class="form-grid" id="estimateForm">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="ef-name" placeholder="Your name"></div>
+        <div class="form-group"><label>Phone *</label><input type="tel" placeholder="+91 00000 00000"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Budget Range</label><select><option value="">Select…</option><option>Under ₹5 Lakhs</option><option>₹5–₹15 Lakhs</option><option>₹15–₹30 Lakhs</option><option>Above ₹30 Lakhs</option></select></div>
+        <div class="form-group span-2"><label>Project Description *</label><textarea id="ef-desc" placeholder="Describe your requirements…"></textarea></div>
+        <div class="form-submit span-2"><button class="btn btn-gold" style="width:100%;justify-content:center;padding:18px;" onclick="submitEstimate()"><i class="fas fa-paper-plane"></i>Submit Request</button></div>
+      </div>
+      <div class="form-success" id="estimateSuccess"><div class="fs-icon"><i class="fas fa-check"></i></div><h3>Thank You!</h3><p>We'll contact you within 24 hours.</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('scrolled',scrollY>20); });
+function toggleDrawer(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileDrawer').classList.toggle('open'); document.body.style.overflow=document.getElementById('mobileDrawer').classList.contains('open')?'hidden':''; }
+function openModal(e){ if(e)e.preventDefault(); document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal'))closeModal(); });
+function submitEstimate(){ const n=document.getElementById('ef-name').value,d=document.getElementById('ef-desc').value; if(!n||!d){alert('Please fill required fields.');return;} document.getElementById('estimateForm').style.display='none'; document.getElementById('estimateSuccess').style.display='block'; }
+function toggleFaq(el){ el.parentElement.classList.toggle('open'); }
+const obs=new IntersectionObserver(e=>e.forEach(el=>{ if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);} }),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Responsive sidebar hide
+if(window.innerWidth < 900){
+  const sidebar = document.querySelector('section.section > .container > div:last-child');
+  if(sidebar) sidebar.style.display='none';
+}
+</script>
+</body>
+</html>
