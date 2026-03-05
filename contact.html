@@ -107,24 +107,15 @@
 
 /* ── Tablet (≤ 900px) ── */
 @media (max-width: 900px) {
-  .contact-layout {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .contact-form-panel {
-    position: static;
-    padding: 36px 28px;
-  }
+  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+  .contact-form-panel { position: static; padding: 36px 28px; }
   .social-grid { grid-template-columns: repeat(3, 1fr); }
   .reveal { opacity: 1 !important; transform: none !important; }
   .map-frame { margin-top: 36px; }
   .map-frame iframe { height: 260px; }
   .hours-block { padding: 22px 24px; }
-
-  /* Quick connect strip */
   .quick-strip-grid {
     grid-template-columns: 1fr !important;
-    gap: 0 !important;
   }
   .quick-strip-grid a {
     border-left: none !important;
@@ -137,53 +128,27 @@
 
 /* ── Mobile (≤ 620px) ── */
 @media (max-width: 620px) {
-  /* Layout */
   .contact-layout { gap: 36px; }
   .contact-form-panel { padding: 28px 18px; }
   .cfp-title { font-size: 22px; }
   .cfp-sub { font-size: 12px; margin-bottom: 24px; }
-
-  /* Contact items */
   .contact-item { gap: 14px; padding: 20px 0; }
   .contact-icon { width: 42px; height: 42px; font-size: 15px; }
   .ci-value { font-size: 14px; }
-
-  /* Hours */
   .hours-block { padding: 18px 16px; margin-top: 32px; }
   .hours-row { font-size: 11px; padding: 8px 0; }
-
-  /* Social grid */
-  .social-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 28px;
-  }
+  .social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 28px; }
   .social-card { padding: 16px 12px; gap: 6px; }
   .social-card i { font-size: 18px; }
-
-  /* Map */
   .map-frame { margin-top: 28px; }
   .map-frame iframe { height: 220px; }
-
-  /* Form */
   .form-grid { grid-template-columns: 1fr !important; }
   .form-group.span-2 { grid-column: span 1 !important; }
-  .form-group input,
-  .form-group select,
-  .form-group textarea { font-size: 14px; padding: 12px 14px; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 14px; padding: 12px 14px; }
   #cfSubmitBtn { font-size: 12px !important; padding: 15px !important; }
-
-  /* Quick connect */
   .quick-strip-grid a { padding: 24px 16px !important; }
   .quick-strip-num { font-size: 15px !important; }
-
-  /* Page hero */
   .page-hero { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 48px; }
-
-  /* Section header */
-  .contact-layout > div:first-child > h2 { margin-bottom: 28px !important; }
-
-  /* Footer */
   .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 }
@@ -269,7 +234,7 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="ci-label">Email</div>
-              <a class="ci-link" href="/cdn-cgi/l/email-protection#d4bdbab2bb94b5a6b7b9b5acbdbaa0b1a6bdbba6a7fab7bbb9"><div class="ci-value"><span class="__cf_email__" data-cfemail="741d1a121b3415061719150c1d1a0011061d1b06075a171b19">[email&#160;protected]</span></div></a>
+              <a class="ci-link" href="mailto:info@arcmaxinteriors.com"><div class="ci-value">info@arcmaxinteriors.com</div></a>
               <div class="ci-sub">We reply within 24 hours</div>
             </div>
           </div>
@@ -307,7 +272,7 @@
         <!-- Map -->
         <div class="map-frame reveal" style="transition-delay:0.4s">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.6369!3d23.0105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87b0f3a9c2b1%3A0x1!2sAmaraiwadi%2C+Ahmedabad%2C+Gujarat+380026!5e0!3m2!1sen!2sin!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.6369!3d23.0105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87b0f3a9c2b1%3A0x1!2sAmaraiwadi%2C+Ahmedabad%2C+Gujarat+380038!5e0!3m2!1sen!2sin!4v1"
             loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
             title="Arcmax Interiors Location — Amaraiwadi, Ahmedabad">
           </iframe>
@@ -419,17 +384,17 @@
       <a href="tel:+919828970747" style="padding:40px 32px; text-align:center; text-decoration:none; transition:background 0.3s; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fas fa-phone-alt" style="font-size:28px; color:var(--gold); display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">Call Us</div>
-        <div class="quick-strip-num" style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">+91 98289 70747</div>
+        <div style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;" class="quick-strip-num">+91 98289 70747</div>
       </a>
       <a href="https://wa.me/919828970747" target="_blank" style="padding:40px 32px; text-align:center; text-decoration:none; display:block; border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fab fa-whatsapp" style="font-size:28px; color:#25D366; display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">WhatsApp</div>
-        <div class="quick-strip-num" style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">Chat with Us</div>
+        <div style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;" class="quick-strip-num">Chat with Us</div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#6b02050d042b0a1908060a1302051f0e190204191845080406" style="padding:40px 32px; text-align:center; text-decoration:none; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+      <a href="mailto:info@arcmaxinteriors.com" style="padding:40px 32px; text-align:center; text-decoration:none; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fas fa-envelope" style="font-size:28px; color:var(--gold); display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">Email</div>
-        <div style="font-family:var(--futura); font-size:16px; font-weight:500; color:white; letter-spacing:0.5px;"><span class="__cf_email__" data-cfemail="2940474f4669485b4a44485140475d4c5b40465b5a074a4644">[email&#160;protected]</span></div>
+        <div style="font-family:var(--futura); font-size:16px; font-weight:500; color:white; letter-spacing:0.5px;" class="quick-strip-num">info@arcmaxinteriors.com</div>
       </a>
     </div>
   </div>
@@ -481,7 +446,7 @@
         <ul>
           <li><a href="tel:+919828970747"><i class="fas fa-phone-alt"></i>+91 98289 70747</a></li>
           <li><a href="https://wa.me/919828970747"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#f990979f96b9988b9a94988190978d9c8b90968b8ad79a9694"><i class="fas fa-envelope"></i><span class="__cf_email__" data-cfemail="dab3b4bcb59abba8b9b7bba2b3b4aebfa8b3b5a8a9f4b9b5b7">[email&#160;protected]</span></a></li>
+          <li><a href="mailto:info@arcmaxinteriors.com"><i class="fas fa-envelope"></i>info@arcmaxinteriors.com</a></li>
           <li><a href="#"><i class="fas fa-map-marker-alt"></i>Amaraiwadi, Ahmedabad 380038</a></li>
         </ul>
       </div>
@@ -561,7 +526,7 @@
      (Must be plain script, NOT module, so onclick=""
       attributes on buttons can call these functions)
 ══════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* Nav shadow on scroll */
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', scrollY > 20);
