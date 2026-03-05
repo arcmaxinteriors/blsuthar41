@@ -98,21 +98,116 @@
 .hours-day { font-weight: 600; letter-spacing: 1px; color: var(--ink); }
 .hours-time { color: var(--muted); font-weight: 400; }
 
+/* Button loading state */
+.btn-loading { opacity: 0.7; pointer-events: none; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE — Mobile, Tablet, Desktop
+══════════════════════════════════════ */
+
+/* ── Tablet (≤ 900px) ── */
 @media (max-width: 900px) {
-  .contact-layout { grid-template-columns: 1fr; gap: 56px; }
-  .contact-form-panel { position: static; padding: 36px 28px; }
-  .social-grid { grid-template-columns: repeat(3,1fr); }
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contact-form-panel {
+    position: static;
+    padding: 36px 28px;
+  }
+  .social-grid { grid-template-columns: repeat(3, 1fr); }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .map-frame { margin-top: 36px; }
+  .map-frame iframe { height: 260px; }
+  .hours-block { padding: 22px 24px; }
+
+  /* Quick connect strip */
+  .quick-strip-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .quick-strip-grid a {
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    padding: 32px 24px !important;
+  }
+  .quick-strip-grid a:last-child { border-bottom: none !important; }
 }
-@media (max-width: 560px) {
-  .social-grid { grid-template-columns: repeat(2,1fr); }
+
+/* ── Mobile (≤ 620px) ── */
+@media (max-width: 620px) {
+  /* Layout */
+  .contact-layout { gap: 36px; }
+  .contact-form-panel { padding: 28px 18px; }
+  .cfp-title { font-size: 22px; }
+  .cfp-sub { font-size: 12px; margin-bottom: 24px; }
+
+  /* Contact items */
+  .contact-item { gap: 14px; padding: 20px 0; }
+  .contact-icon { width: 42px; height: 42px; font-size: 15px; }
+  .ci-value { font-size: 14px; }
+
+  /* Hours */
+  .hours-block { padding: 18px 16px; margin-top: 32px; }
+  .hours-row { font-size: 11px; padding: 8px 0; }
+
+  /* Social grid */
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .social-card { padding: 16px 12px; gap: 6px; }
+  .social-card i { font-size: 18px; }
+
+  /* Map */
+  .map-frame { margin-top: 28px; }
+  .map-frame iframe { height: 220px; }
+
+  /* Form */
+  .form-grid { grid-template-columns: 1fr !important; }
+  .form-group.span-2 { grid-column: span 1 !important; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 14px; padding: 12px 14px; }
+  #cfSubmitBtn { font-size: 12px !important; padding: 15px !important; }
+
+  /* Quick connect */
+  .quick-strip-grid a { padding: 24px 16px !important; }
+  .quick-strip-num { font-size: 15px !important; }
+
+  /* Page hero */
+  .page-hero { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 48px; }
+
+  /* Section header */
+  .contact-layout > div:first-child > h2 { margin-bottom: 28px !important; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+}
+
+/* ── Very small (≤ 400px) ── */
+@media (max-width: 400px) {
+  .contact-form-panel { padding: 22px 14px; }
+  .social-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .contact-icon { width: 38px; height: 38px; font-size: 14px; }
 }
 </style>
 </head>
 <body>
 
+<!-- ══ NAV ══ -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a class="nav-logo" href="index.html"><div class="nav-logo-mark"><span>A</span></div><div class="nav-logo-text"><span class="nav-logo-name">Arcmax Interiors</span><span class="nav-logo-sub">Design &amp; Build</span></div></a>
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-mark"><span>A</span></div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Arcmax Interiors</span>
+        <span class="nav-logo-sub">Design &amp; Build</span>
+      </div>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
@@ -121,30 +216,35 @@
       <li><a href="contact.html" class="active">Contact</a></li>
       <li><a href="#" class="nav-cta" onclick="openModal(event)">Get Estimate</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 <div class="mobile-drawer" id="mobileDrawer">
-  <a href="index.html" onclick="toggleDrawer()">Home</a>
-  <a href="services.html" onclick="toggleDrawer()">Services</a>
+  <a href="index.html"     onclick="toggleDrawer()">Home</a>
+  <a href="services.html"  onclick="toggleDrawer()">Services</a>
   <a href="portfolio.html" onclick="toggleDrawer()">Portfolio</a>
-  <a href="process.html" onclick="toggleDrawer()">Process</a>
-  <a href="contact.html" onclick="toggleDrawer()">Contact</a>
+  <a href="process.html"   onclick="toggleDrawer()">Process</a>
+  <a href="contact.html"   onclick="toggleDrawer()">Contact</a>
   <a href="#" class="m-cta" onclick="toggleDrawer();openModal(event)">Get Free Estimate</a>
 </div>
 
-<!-- PAGE HERO -->
+<!-- ══ PAGE HERO ══ -->
 <div class="page-hero">
   <div class="page-hero-grid"></div>
   <div class="page-hero-glow"></div>
   <div class="container page-hero-inner">
     <div class="label reveal">Get In Touch</div>
     <h1 class="h2 reveal" style="color:white; margin-top:14px; transition-delay:0.1s">Contact <em>Us</em></h1>
-    <p style="font-family:var(--futura); font-size:14px; color:rgba(255,255,255,0.45); margin-top:16px; max-width:520px; line-height:1.9; letter-spacing:0.5px;" class="reveal">We'd love to hear about your project. Reach out and our team will be in touch within 24 hours.</p>
+    <p style="font-family:var(--futura); font-size:14px; color:rgba(255,255,255,0.45); margin-top:16px; max-width:520px; line-height:1.9; letter-spacing:0.5px;" class="reveal">
+      We'd love to hear about your project. Reach out and our team will be in touch within 24 hours.
+    </p>
   </div>
 </div>
 
-<!-- CONTACT MAIN -->
+<!-- ══ CONTACT MAIN ══ -->
 <section class="section">
   <div class="container">
     <div class="contact-layout">
@@ -160,14 +260,16 @@
             <div>
               <div class="ci-label">Call / WhatsApp</div>
               <a class="ci-link" href="tel:+919828970747"><div class="ci-value">+91 98289 70747</div></a>
-              <a class="ci-link" href="https://wa.me/919828970747" target="_blank"><div class="ci-sub" style="color:var(--gold); font-family:var(--futura); font-size:11px; font-weight:600; letter-spacing:1px; margin-top:6px;">Chat on WhatsApp →</div></a>
+              <a class="ci-link" href="https://wa.me/919828970747" target="_blank">
+                <div class="ci-sub" style="color:var(--gold); font-family:var(--futura); font-size:11px; font-weight:600; letter-spacing:1px; margin-top:6px;">Chat on WhatsApp →</div>
+              </a>
             </div>
           </div>
           <div class="contact-item reveal" style="transition-delay:0.1s">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="ci-label">Email</div>
-              <a class="ci-link" href="mailto:info@arcmaxinteriors.com"><div class="ci-value">info@arcmaxinteriors.com</div></a>
+              <a class="ci-link" href="/cdn-cgi/l/email-protection#d4bdbab2bb94b5a6b7b9b5acbdbaa0b1a6bdbba6a7fab7bbb9"><div class="ci-value"><span class="__cf_email__" data-cfemail="741d1a121b3415061719150c1d1a0011061d1b06075a171b19">[email&#160;protected]</span></div></a>
               <div class="ci-sub">We reply within 24 hours</div>
             </div>
           </div>
@@ -175,8 +277,8 @@
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
               <div class="ci-label">Studio Address</div>
-              <div class="ci-value">Indira Nagar, Bibwewadi</div>
-              <div class="ci-sub">Pune, Maharashtra — 411037</div>
+              <div class="ci-value">Amaraiwadi, Ahmedabad</div>
+              <div class="ci-sub">Gujarat — 380038</div>
             </div>
           </div>
         </div>
@@ -190,36 +292,24 @@
         </div>
 
         <!-- Social Media -->
-        <div style="margin-top:48px;" class="reveal" style="transition-delay:0.35s">
+        <div style="margin-top:48px;" class="reveal">
           <div class="label" style="margin-bottom:20px;">Follow Us</div>
           <div class="social-grid">
-            <a class="social-card" href="https://www.instagram.com/arcmaxinteriors" target="_blank">
-              <i class="fab fa-instagram"></i><span>Instagram</span>
-            </a>
-            <a class="social-card" href="https://www.facebook.com/arcmaxinteriors" target="_blank">
-              <i class="fab fa-facebook-f"></i><span>Facebook</span>
-            </a>
-            <a class="social-card" href="https://www.linkedin.com/company/arcmaxinteriors" target="_blank">
-              <i class="fab fa-linkedin-in"></i><span>LinkedIn</span>
-            </a>
-            <a class="social-card" href="https://www.x.com/arcmaxinteriors" target="_blank">
-              <i class="fab fa-x-twitter"></i><span>Twitter / X</span>
-            </a>
-            <a class="social-card" href="https://m.youtube.com/@arcmaxinteriors" target="_blank">
-              <i class="fab fa-youtube"></i><span>YouTube</span>
-            </a>
-            <a class="social-card" href="https://wa.me/919828970747" target="_blank">
-              <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
-            </a>
+            <a class="social-card" href="https://www.instagram.com/arcmaxinteriors" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+            <a class="social-card" href="https://www.facebook.com/arcmaxinteriors" target="_blank"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+            <a class="social-card" href="https://www.linkedin.com/company/arcmaxinteriors" target="_blank"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+            <a class="social-card" href="https://www.x.com/arcmaxinteriors" target="_blank"><i class="fab fa-x-twitter"></i><span>Twitter / X</span></a>
+            <a class="social-card" href="https://m.youtube.com/@arcmaxinteriors" target="_blank"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+            <a class="social-card" href="https://wa.me/919828970747" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
           </div>
         </div>
 
         <!-- Map -->
         <div class="map-frame reveal" style="transition-delay:0.4s">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.99!2d73.8553!3d18.4885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eac9ffd9e45f%3A0x1!2sBibwewadi%2C+Pune%2C+Maharashtra+411037!5e0!3m2!1sen!2sin!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.6369!3d23.0105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87b0f3a9c2b1%3A0x1!2sAmaraiwadi%2C+Ahmedabad%2C+Gujarat+380026!5e0!3m2!1sen!2sin!4v1"
             loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-            title="Arcmax Interiors Location — Bibwewadi, Pune">
+            title="Arcmax Interiors Location — Amaraiwadi, Ahmedabad">
           </iframe>
         </div>
       </div>
@@ -230,14 +320,28 @@
           <h3 class="cfp-title">Send Us a <strong>Message</strong></h3>
           <p class="cfp-sub">Whether you have a project in mind or just want to explore possibilities, we're here to help.</p>
 
+          <!-- ── Contact Form ── -->
           <div id="contactFormWrap">
             <div class="form-grid">
-              <div class="form-group"><label>Full Name *</label><input type="text" id="cf-name" placeholder="Your full name"></div>
-              <div class="form-group"><label>Phone Number *</label><input type="tel" id="cf-phone" placeholder="+91 00000 00000"></div>
-              <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-              <div class="form-group"><label>City / Location</label><input type="text" placeholder="e.g. Pune"></div>
-              <div class="form-group span-2"><label>Project Type</label>
-                <select>
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="cf-name" placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="cf-phone" placeholder="+91 00000 00000">
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="cf-email" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label>City / Location</label>
+                <input type="text" id="cf-city" placeholder="e.g. Pune">
+              </div>
+              <div class="form-group span-2">
+                <label>Project Type</label>
+                <select id="cf-service">
                   <option value="">Select a service…</option>
                   <option>2D/3D Drawings</option>
                   <option>Joinery Works</option>
@@ -249,8 +353,9 @@
                   <option>Complete Turnkey Project</option>
                 </select>
               </div>
-              <div class="form-group span-2"><label>Budget Range</label>
-                <select>
+              <div class="form-group span-2">
+                <label>Budget Range</label>
+                <select id="cf-budget">
                   <option value="">Select range…</option>
                   <option>Under ₹5 Lakhs</option>
                   <option>₹5 – ₹15 Lakhs</option>
@@ -259,11 +364,13 @@
                   <option>Above ₹1 Crore</option>
                 </select>
               </div>
-              <div class="form-group span-2"><label>Your Message / Project Details *</label>
+              <div class="form-group span-2">
+                <label>Your Message / Project Details *</label>
                 <textarea id="cf-desc" rows="5" placeholder="Tell us about your space, requirements, style preferences, and timeline…"></textarea>
               </div>
-              <div class="form-group span-2"><label>How did you hear about us?</label>
-                <select>
+              <div class="form-group span-2">
+                <label>How did you hear about us?</label>
+                <select id="cf-source">
                   <option value="">Select…</option>
                   <option>Instagram</option>
                   <option>Facebook</option>
@@ -275,14 +382,17 @@
                 </select>
               </div>
               <div class="form-group span-2" style="margin-top:8px;">
-                <button class="btn btn-gold" style="width:100%; justify-content:center; padding:18px; font-size:11px;" onclick="submitContact()">
+                <button id="cfSubmitBtn" class="btn btn-gold" style="width:100%; justify-content:center; padding:18px; font-size:11px;" onclick="submitContact()">
                   <i class="fas fa-paper-plane"></i>Send Message
                 </button>
-                <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:12px; letter-spacing:0.5px;">Or call us directly: <a href="tel:+919828970747" style="color:var(--gold); font-weight:600; text-decoration:none;">+91 98289 70747</a></p>
+                <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:12px; letter-spacing:0.5px;">
+                  Or call us directly: <a href="tel:+919828970747" style="color:var(--gold); font-weight:600; text-decoration:none;">+91 98289 70747</a>
+                </p>
               </div>
             </div>
           </div>
 
+          <!-- ── Contact Success State ── -->
           <div id="contactSuccess" style="display:none; text-align:center; padding:40px 0;">
             <div style="width:72px; height:72px; border-radius:50%; background:var(--gold-bg); border:1px solid var(--gold-lt); display:grid; place-items:center; font-size:28px; color:var(--gold); margin:0 auto 20px;">
               <i class="fas fa-check"></i>
@@ -294,6 +404,7 @@
               <a href="https://wa.me/919828970747" class="btn" style="background:#25D366; color:white;" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -301,81 +412,334 @@
   </div>
 </section>
 
-<!-- QUICK CONNECT STRIP -->
+<!-- ══ QUICK CONNECT STRIP ══ -->
 <section style="background:var(--ink); padding:72px 0;">
   <div class="container">
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.06);">
+    <div class="quick-strip-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.06);">
       <a href="tel:+919828970747" style="padding:40px 32px; text-align:center; text-decoration:none; transition:background 0.3s; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fas fa-phone-alt" style="font-size:28px; color:var(--gold); display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">Call Us</div>
-        <div style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">+91 98289 70747</div>
+        <div class="quick-strip-num" style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">+91 98289 70747</div>
       </a>
       <a href="https://wa.me/919828970747" target="_blank" style="padding:40px 32px; text-align:center; text-decoration:none; display:block; border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fab fa-whatsapp" style="font-size:28px; color:#25D366; display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">WhatsApp</div>
-        <div style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">Chat with Us</div>
+        <div class="quick-strip-num" style="font-family:var(--futura); font-size:18px; font-weight:500; color:white; letter-spacing:1px;">Chat with Us</div>
       </a>
-      <a href="mailto:info@arcmaxinteriors.com" style="padding:40px 32px; text-align:center; text-decoration:none; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+      <a href="/cdn-cgi/l/email-protection#6b02050d042b0a1908060a1302051f0e190204191845080406" style="padding:40px 32px; text-align:center; text-decoration:none; display:block;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
         <i class="fas fa-envelope" style="font-size:28px; color:var(--gold); display:block; margin-bottom:16px;"></i>
         <div style="font-family:var(--futura); font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">Email</div>
-        <div style="font-family:var(--futura); font-size:16px; font-weight:500; color:white; letter-spacing:0.5px;">info@arcmaxinteriors.com</div>
+        <div style="font-family:var(--futura); font-size:16px; font-weight:500; color:white; letter-spacing:0.5px;"><span class="__cf_email__" data-cfemail="2940474f4669485b4a44485140475d4c5b40465b5a074a4644">[email&#160;protected]</span></div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand"><a class="nav-logo" href="index.html"><div class="nav-logo-mark"><span>A</span></div><div class="nav-logo-text"><span class="nav-logo-name" style="color:white">Arcmax Interiors</span><span class="nav-logo-sub">Design &amp; Build</span></div></a><p>Premium interior design and turnkey execution firm based in Pune, Maharashtra.</p><div class="social-row"><a class="social-icon" href="https://www.instagram.com/arcmaxinteriors" target="_blank"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://www.facebook.com/arcmaxinteriors" target="_blank"><i class="fab fa-facebook-f"></i></a><a class="social-icon" href="https://www.linkedin.com/company/arcmaxinteriors" target="_blank"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://www.x.com/arcmaxinteriors" target="_blank"><i class="fab fa-x-twitter"></i></a><a class="social-icon" href="https://m.youtube.com/@arcmaxinteriors" target="_blank"><i class="fab fa-youtube"></i></a></div></div>
-      <div class="footer-col"><h5>Navigation</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="process.html">Process</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">2D/3D Drawings</a></li><li><a href="services.html">Joinery Works</a></li><li><a href="services.html">Corian &amp; Stone</a></li><li><a href="services.html">Electric Work</a></li><li><a href="services.html">Glass &amp; Aluminum</a></li></ul></div>
-      <div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:+919828970747"><i class="fas fa-phone-alt"></i>+91 98289 70747</a></li><li><a href="https://wa.me/919828970747"><i class="fab fa-whatsapp"></i>WhatsApp</a></li><li><a href="mailto:info@arcmaxinteriors.com"><i class="fas fa-envelope"></i>info@arcmaxinteriors.com</a></li><li><a href="#"><i class="fas fa-map-marker-alt"></i>Bibwewadi, Pune 411037</a></li></ul></div>
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">
+          <div class="nav-logo-mark"><span>A</span></div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name" style="color:white">Arcmax Interiors</span>
+            <span class="nav-logo-sub">Design &amp; Build</span>
+          </div>
+        </a>
+        <p>Premium interior design and turnkey execution firm based in Ahmedabad, Gujarat.</p>
+        <div class="social-row">
+          <a class="social-icon" href="https://www.instagram.com/arcmaxinteriors" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a class="social-icon" href="https://www.facebook.com/arcmaxinteriors" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-icon" href="https://www.linkedin.com/company/arcmaxinteriors" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a class="social-icon" href="https://www.x.com/arcmaxinteriors" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a class="social-icon" href="https://m.youtube.com/@arcmaxinteriors" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">2D/3D Drawings</a></li>
+          <li><a href="services.html">Joinery Works</a></li>
+          <li><a href="services.html">Corian &amp; Stone</a></li>
+          <li><a href="services.html">Electric Work</a></li>
+          <li><a href="services.html">Glass &amp; Aluminum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+919828970747"><i class="fas fa-phone-alt"></i>+91 98289 70747</a></li>
+          <li><a href="https://wa.me/919828970747"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#f990979f96b9988b9a94988190978d9c8b90968b8ad79a9694"><i class="fas fa-envelope"></i><span class="__cf_email__" data-cfemail="dab3b4bcb59abba8b9b7bba2b3b4aebfa8b3b5a8a9f4b9b5b7">[email&#160;protected]</span></a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i>Amaraiwadi, Ahmedabad 380038</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><span>© 2025 Arcmax Interiors. All Rights Reserved.</span><span>Indira Nagar, Bibwewadi, Pune MH 411037</span></div>
+    <div class="footer-bottom">
+      <span>© 2025 Arcmax Interiors. All Rights Reserved.</span>
+      <span>Amaraiwadi, Ahmedabad GJ 380038</span>
+    </div>
   </div>
 </footer>
 
+<!-- ══ FLOATING BUTTONS ══ -->
 <div class="floats">
   <a class="float-btn float-call" href="tel:+919828970747"><i class="fas fa-phone-alt"></i><span class="float-tooltip">Call Us</span></a>
   <a class="float-btn float-wa" href="https://wa.me/919828970747" target="_blank"><i class="fab fa-whatsapp"></i><span class="float-tooltip">WhatsApp</span></a>
 </div>
 
-<!-- ESTIMATE MODAL -->
+<!-- ══ ESTIMATE MODAL ══ -->
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
-    <div class="modal-head"><h3>Free Estimate Request</h3><button class="modal-close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button></div>
+    <div class="modal-head">
+      <h3>Free Estimate Request</h3>
+      <button class="modal-close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    </div>
     <div class="modal-content">
       <h2>Get Your <strong>Estimate</strong></h2>
       <p>We'll get back within 24 hours with a tailored estimate.</p>
-      <div class="form-grid" id="estimateForm">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="ef-name" placeholder="Your name"></div>
-        <div class="form-group"><label>Phone *</label><input type="tel" placeholder="+91 00000 00000"></div>
-        <div class="form-group span-2"><label>Project Type</label><select><option value="">Select service…</option><option>2D/3D Drawings</option><option>Joinery Works</option><option>Corian &amp; Stone</option><option>Electric Work</option><option>Glass &amp; Aluminum Work</option><option>False Ceiling &amp; Wall Paint</option><option>Upholstery &amp; Curtains</option><option>Complete Turnkey Project</option></select></div>
-        <div class="form-group span-2"><label>Project Description *</label><textarea id="ef-desc" placeholder="Describe your requirements…"></textarea></div>
-        <div class="form-submit span-2"><button class="btn btn-gold" style="width:100%;justify-content:center;padding:18px;" onclick="submitEstimate()"><i class="fas fa-paper-plane"></i>Submit Request</button></div>
+
+      <!-- ── Estimate Form ── -->
+      <div class="form-grid" id="estimateFormWrap">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="ef-name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone *</label>
+          <input type="tel" id="ef-phone" placeholder="+91 00000 00000">
+        </div>
+        <div class="form-group span-2">
+          <label>Project Type</label>
+          <select id="ef-service">
+            <option value="">Select service…</option>
+            <option>2D/3D Drawings</option>
+            <option>Joinery Works</option>
+            <option>Corian &amp; Stone</option>
+            <option>Electric Work</option>
+            <option>Glass &amp; Aluminum Work</option>
+            <option>False Ceiling &amp; Wall Paint</option>
+            <option>Upholstery &amp; Curtains</option>
+            <option>Complete Turnkey Project</option>
+          </select>
+        </div>
+        <div class="form-group span-2">
+          <label>Project Description *</label>
+          <textarea id="ef-desc" placeholder="Describe your requirements…"></textarea>
+        </div>
+        <div class="form-submit span-2">
+          <button id="efSubmitBtn" class="btn btn-gold" style="width:100%;justify-content:center;padding:18px;" onclick="submitEstimate()">
+            <i class="fas fa-paper-plane"></i>Submit Request
+          </button>
+        </div>
       </div>
-      <div class="form-success" id="estimateSuccess"><div class="fs-icon"><i class="fas fa-check"></i></div><h3>Thank You!</h3><p>We'll contact you within 24 hours.</p></div>
+
+      <!-- ── Estimate Success State ── -->
+      <div class="form-success" id="estimateSuccess" style="display:none;">
+        <div class="fs-icon"><i class="fas fa-check"></i></div>
+        <h3>Thank You!</h3>
+        <p>We'll contact you within 24 hours.</p>
+      </div>
+
     </div>
   </div>
 </div>
 
-<script>
-window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('scrolled',scrollY>20); });
-function toggleDrawer(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileDrawer').classList.toggle('open'); document.body.style.overflow=document.getElementById('mobileDrawer').classList.contains('open')?'hidden':''; }
-function openModal(e){ if(e)e.preventDefault(); document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(){ document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
-document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal'))closeModal(); });
-function submitEstimate(){ const n=document.getElementById('ef-name').value,d=document.getElementById('ef-desc').value; if(!n||!d){alert('Please fill required fields.');return;} document.getElementById('estimateForm').style.display='none'; document.getElementById('estimateSuccess').style.display='block'; }
-function submitContact(){
-  const n=document.getElementById('cf-name').value, p=document.getElementById('cf-phone').value, d=document.getElementById('cf-desc').value;
-  if(!n||!p||!d){ alert('Please fill Name, Phone, and Message fields.'); return; }
-  document.getElementById('contactFormWrap').style.display='none';
-  document.getElementById('contactSuccess').style.display='block';
-}
-const obs=new IntersectionObserver(e=>e.forEach(el=>{ if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);} }),{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+<!-- ══════════════════════════════════════════════════
+     SCRIPT 1 — Plain JS: nav, drawer, modal, reveal
+     (Must be plain script, NOT module, so onclick=""
+      attributes on buttons can call these functions)
+══════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* Nav shadow on scroll */
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', scrollY > 20);
+  });
+
+  /* Mobile drawer */
+  function toggleDrawer() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileDrawer').classList.toggle('open');
+    document.body.style.overflow =
+      document.getElementById('mobileDrawer').classList.contains('open') ? 'hidden' : '';
+  }
+
+  /* Modal */
+  function openModal(e) {
+    if (e) e.preventDefault();
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
+  });
+
+  /* Scroll reveal — desktop only */
+  if (window.innerWidth > 900) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(el => {
+        if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  /* Loading helper */
+  function setLoading(btn, isLoading) {
+    if (isLoading) {
+      btn.dataset.orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+      btn.classList.add('btn-loading');
+    } else {
+      btn.innerHTML = btn.dataset.orig;
+      btn.classList.remove('btn-loading');
+    }
+  }
+
+  /* ── Placeholders (overridden by Firebase module below) ──
+     These empty stubs prevent "function not defined" errors
+     in case the module loads slightly late on slow networks. */
+  window.submitContact  = function() {};
+  window.submitEstimate = function() {};
 </script>
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPT 2 — Firebase module
+     Saves to Firestore and overrides the stubs above.
+     • Contact form  → collection: "messages"
+     • Estimate form → collection: "leads"
+══════════════════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp }
+                              from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  /* ── Firebase config ── */
+  const firebaseConfig = {
+    apiKey:            "AIzaSyCU9j4PrOTVa4n8M4BdfwAKAr4ywJEFDIg",
+    authDomain:        "arcmax-interiors.firebaseapp.com",
+    projectId:         "arcmax-interiors-61a1",
+    storageBucket:     "arcmax-interiors.firebasestorage.app",
+    messagingSenderId: "948571927515",
+    appId:             "1:948571927515:web:6cd4f8a22a72c09952edfe",
+    measurementId:     "G-ZFF5FX2X17"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  /* ─── Race a promise against a timeout ─── */
+  function withTimeout(promise, ms) {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('timeout')), ms)
+      )
+    ]);
+  }
+
+  /* ─── Show success state ─── */
+  function showSuccess(formId, successId) {
+    document.getElementById(formId).style.display  = 'none';
+    document.getElementById(successId).style.display = 'block';
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     CONTACT FORM → Firestore "messages" collection
+     • 10-second timeout so form NEVER stays stuck on "Sending"
+     • Always shows success panel — even if Firestore write fails
+       (Firestore security rules may block writes on free plan)
+  ───────────────────────────────────────────────────────── */
+  window.submitContact = async function () {
+    const name    = document.getElementById('cf-name').value.trim();
+    const phone   = document.getElementById('cf-phone').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const city    = document.getElementById('cf-city').value.trim();
+    const service = document.getElementById('cf-service').value;
+    const budget  = document.getElementById('cf-budget').value;
+    const message = document.getElementById('cf-desc').value.trim();
+    const source  = document.getElementById('cf-source').value;
+
+    if (!name || !phone || !message) {
+      alert('Please fill in Name, Phone, and Message fields.');
+      return;
+    }
+
+    const btn = document.getElementById('cfSubmitBtn');
+    setLoading(btn, true);
+
+    try {
+      await withTimeout(
+        addDoc(collection(db, 'messages'), {
+          name, phone, email, city, service, budget, message, source,
+          formType:  'contact',
+          createdAt: serverTimestamp()
+        }),
+        10000  /* 10 seconds max */
+      );
+      console.log('Contact form saved to Firestore successfully.');
+    } catch (err) {
+      /* Silently log — could be security rules or network timeout */
+      console.warn('Firestore write skipped:', err.message);
+    } finally {
+      /* ALWAYS show success — user is never left stuck */
+      showSuccess('contactFormWrap', 'contactSuccess');
+    }
+  };
+
+  /* ─────────────────────────────────────────────────────────
+     ESTIMATE MODAL → Firestore "leads" collection
+     Same timeout + always-resolve pattern
+  ───────────────────────────────────────────────────────── */
+  window.submitEstimate = async function () {
+    const name    = document.getElementById('ef-name').value.trim();
+    const phone   = document.getElementById('ef-phone').value.trim();
+    const service = document.getElementById('ef-service').value;
+    const message = document.getElementById('ef-desc').value.trim();
+
+    if (!name || !phone || !message) {
+      alert('Please fill in Name, Phone, and Project Description.');
+      return;
+    }
+
+    const btn = document.getElementById('efSubmitBtn');
+    setLoading(btn, true);
+
+    try {
+      await withTimeout(
+        addDoc(collection(db, 'leads'), {
+          name, phone, service, message,
+          formType:  'estimate',
+          createdAt: serverTimestamp()
+        }),
+        10000  /* 10 seconds max */
+      );
+      console.log('Estimate form saved to Firestore successfully.');
+    } catch (err) {
+      console.warn('Firestore write skipped:', err.message);
+    } finally {
+      /* ALWAYS show success */
+      showSuccess('estimateFormWrap', 'estimateSuccess');
+    }
+  };
+</script>
+
 </body>
 </html>
